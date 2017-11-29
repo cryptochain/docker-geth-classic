@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker run --name ethereum-testbox \
+docker run --name ethereum-classic-testbox \
   -tid -p 40303:30303 -p 9545:8545 cryptochain/ethereum-classic-docker:latest \
   --datadir=/root/.ethereum/devchain \
   --rpc \

@@ -19,6 +19,7 @@ RUN  \
     cp `which geth` /
 
 RUN mkdir /root/files
+RUN mkdir /root/.ethereum
 RUN mkdir /root/.ethereum/devchain
 
 VOLUME ./files/genesis.json:/root/files/genesis.json:ro
