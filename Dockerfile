@@ -1,5 +1,7 @@
 FROM alpine:3.5
-MAINTAINER Toby <t.post@hotmail.com>
+
+LABEL maintainer="Dmitry Ananichev <a@qozz.ru>"
+
 RUN apk add --no-cache --virtual --update go \
         git \
         gcc \
@@ -15,6 +17,13 @@ RUN  \
     rm -rf ./pkg  && \
     rm -rf ./src  && \
     cp `which geth` /
+
+RUN mkdir /root/files
+RUN mkdir /root/.ethereum/devchain
+
+VOLUME ./files/genesis.json:/root/files/genesis.json:ro
+VOLUME ./files/keystore:/root/.ethereum/devchain/keystore:rw
+
 EXPOSE 8545
 EXPOSE 30303
 ENTRYPOINT ["/geth"]
