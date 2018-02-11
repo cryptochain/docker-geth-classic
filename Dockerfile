@@ -1,4 +1,4 @@
-FROM alpine:3.5
+FROM alpine:latest
 
 LABEL maintainer="Dmitry Ananichev <a@qozz.ru>"
 
@@ -7,6 +7,7 @@ RUN apk add --no-cache --virtual --update go \
         gcc \
         musl-dev
 ENV GOPATH=/
+RUN go version
 RUN  \
     go get github.com/ethereumproject/go-ethereum/cmd/geth && \
     git clone https://github.com/ethereumproject/go-ethereum && \
