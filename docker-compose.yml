@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-  bitcoin-testnet:
+  etc-testnet:
     build:
       context: ./
       dockerfile: Dockerfile
@@ -14,7 +14,7 @@ services:
         delay: 10s
       placement:
         constraints: [node.hostname == vm01]
-    image: testing.wemic.io:5000/cryptochain/ethereum-classic
+    image: testing.wemic.io:5000/cryptochain/etc-testnet
     logging:
       driver: "json-file"
       options:
