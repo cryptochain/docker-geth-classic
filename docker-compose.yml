@@ -1,0 +1,31 @@
+version: '3.3'
+services:
+  bitcoin-testnet:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: --datadir=/root/.ethereum/devchain --testnet --dev --fast --rpc --rpcapi 'db,personal,eth,net,web3' --rpcaddr='0.0.0.0' --rpccorsdomain='*' --networkid=1234 --mine
+    deploy:
+      endpoint_mode: vip
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: any
+        delay: 10s
+      placement:
+        constraints: [node.hostname == vm01]
+    image: testing.wemic.io:5000/cryptochain/ethereum-classic
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100k"
+        max-file: "10"
+    networks:
+      - web-services
+    ports:
+      - 9545:8545
+      - 40303:30303
+
+networks:
+  web-services:
+    external: true
