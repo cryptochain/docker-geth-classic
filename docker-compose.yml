@@ -4,7 +4,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    command: --datadir=/root/.ethereum/devchain --testnet --dev --fast --rpc --rpcapi 'db,personal,eth,net,web3' --rpcaddr='0.0.0.0' --rpccorsdomain='*' --networkid=1234 --mine
+    command: --datadir=/root/.ethereum/devchain --testnet --fast --rpc --rpcapi 'db,personal,eth,net,web3' --rpcaddr='0.0.0.0' --rpccorsdomain='*'
     deploy:
       endpoint_mode: vip
       mode: replicated
